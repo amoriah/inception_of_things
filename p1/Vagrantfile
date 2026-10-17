@@ -1,0 +1,29 @@
+require "yaml"
+
+settings_path = File.join(__dir__, "confs", "settings.yaml")
+settings = YAML.safe_load(File.read(settings_path))
+
+Vagrant.configure("2") do |config|
+  config.vm.box = settings.fetch("box")
+
+  settings.fetch("machines").each do |machine|
+    config.vm.define machine.fetch("name") do |node|
+      node.vm.hostname = machine.fetch("name")
+      node.vm.network "private_network", ip: machine.fetch("ip")
+
+      node.vm.provider "virtualbox" do |v|
+        v.cpus = machine.fetch("cpus", settings.fetch("cpus"))
+        v.memory = machine.fetch("memory", settings.fetch("memory"))
+      end
+
+      case machine.fetch("role")
+      when "server"
+        node.vm.provision "shell", path: "scripts/server.sh"
+      when "agent"
+        node.vm.provision "shell", path: "scripts/agent.sh"
+      else
+        raise "Unknown role: #{machine.fetch('role')}"
+      end
+    end
+  end
+end
