@@ -1,0 +1,21 @@
+TEAM_LOGIN = "amoriah"
+DEBIAN_BOX = "bento/debian-13"
+
+Vagrant.configure("2") do |config|
+  config.vm.box = DEBIAN_BOX
+
+  config.vm.define "#{TEAM_LOGIN}S" do |server|
+    server.vm.hostname = "#{TEAM_LOGIN}S"
+
+    server.vm.network "private_network",
+      ip: "192.168.56.110"
+
+    server.vm.provider "virtualbox" do |vb|
+      vb.name = "#{TEAM_LOGIN}S"
+      vb.cpus = 2
+      vb.memory = 2048
+    end
+
+    server.vm.provision "shell", path: "scripts/install-server.sh"
+  end
+end
