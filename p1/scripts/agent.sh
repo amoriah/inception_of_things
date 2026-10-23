@@ -1,6 +1,6 @@
 #!/bin/bash
 
-TOKEN_FILE="/vagrant/shared/node-token"
+TOKEN_FILE="/vagrant/confs/node-token"
 
 if [[ ! -s "${TOKEN_FILE}" ]]; then
   echo "ERROR: The shared token file is missing or empty." >&2

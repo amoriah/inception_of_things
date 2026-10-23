@@ -5,7 +5,6 @@ settings = YAML.safe_load(File.read(settings_path))
 
 Vagrant.configure("2") do |config|
   config.vm.box = settings.fetch("box")
-  config.vm.synced_folder "./shared", "/shared", create: true, type: "virtualbox"
 
   settings.fetch("machines").each do |machine|
     config.vm.define machine.fetch("name") do |node|
