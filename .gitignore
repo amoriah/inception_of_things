@@ -1,0 +1,21 @@
+# Vagrant
+.vagrant/
+
+# Kubernetes credentials and generated configs
+kubeconfig
+*.kubeconfig
+node-token
+*.token
+
+# Environment / OS
+.env
+.DS_Store
+Thumbs.db
+
+# Editor
+.idea/
+.vscode/
+
+# Logs and temporary files
+*.log
+*.tmp
