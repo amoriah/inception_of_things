@@ -14,8 +14,6 @@ spec:
     spec:
       containers:
         - name: app1
-          image: paulbouwer/hello-kubernetes:1.10
-          env:
-            - { name: MESSAGE, value: "Hello from app1." }
+          image: traefik/whoami
           ports:
-            - containerPort: 8080
+            - containerPort: 80
