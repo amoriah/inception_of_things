@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: playground
+spec:
+  type: LoadBalancer           # k3d пробрасывает порт 8888 на хост (см. bootstrap.sh)
+  selector:
+    app: playground
+  ports:
+    - port: 8888
+      targetPort: 8888

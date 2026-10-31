@@ -1,0 +1,20 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: playground
+  namespace: argocd
+spec:
+  project: default
+  source:
+    # Публичный репозиторий с логином в названии, например:
+    # https://github.com/<логин>/<логин>-iot-gitops.git
+    repoURL: https://github.com/CHANGE_ME/CHANGE_ME.git
+    targetRevision: HEAD
+    path: manifests            # папка в репозитории с deployment.yaml и service.yaml
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: dev
+  syncPolicy:
+    automated:
+      prune: true              # удалённое из Git удаляется и из кластера
+      selfHeal: true           # ручные правки в кластере откатываются к Git
