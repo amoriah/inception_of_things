@@ -23,7 +23,9 @@ sudo usermod -aG docker "${USER}"
 
 echo ">> kubectl"
 if ! command -v kubectl >/dev/null 2>&1; then
-  KVER="$(curl -fsSL https://dl.k8s.io/release/stable.txt)"
+  # Версия kubectl должна совпадать с K3s, который создаёт k3d (допустима разница в 1 минорную),
+  # иначе kubectl предупреждает о version skew. Узнать версию K3s: `k3d version`.
+  KVER="v1.35.5"
   curl -fsSL -o /tmp/kubectl "https://dl.k8s.io/release/${KVER}/bin/linux/${ARCH}/kubectl"
   sudo install -m 0755 /tmp/kubectl /usr/local/bin/kubectl
 fi

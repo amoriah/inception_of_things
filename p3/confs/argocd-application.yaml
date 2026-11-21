@@ -8,7 +8,7 @@ spec:
   source:
     # Публичный репозиторий с логином в названии, например:
     # https://github.com/<логин>/<логин>-iot-gitops.git
-    repoURL: https://github.com/CHANGE_ME/CHANGE_ME.git
+    repoURL: https://github.com/amoriah/amoriah-iot-gitops.git
     targetRevision: HEAD
     path: manifests            # папка в репозитории с deployment.yaml и service.yaml
   destination:
