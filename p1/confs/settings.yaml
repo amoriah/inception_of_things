@@ -5,7 +5,7 @@ machines:
     ip: "192.168.56.110"
     role: "server"
     cpus: 2
-    memory: 2048
+    memory: 2048 # TODO test to delete
 
   - name: "rtireSW"
     ip: "192.168.56.111"
