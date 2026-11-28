@@ -121,7 +121,8 @@ spec:
                 name: app2
                 port:
                   number: 80
-    - http:                        # без host: подходит всем остальным
+    - host: app3.com
+      http:
         paths:
           - path: /
             pathType: Prefix

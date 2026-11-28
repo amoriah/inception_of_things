@@ -21,3 +21,6 @@ Vagrant.configure("2") do |config|
     #   vagrant ssh -c "bash /vagrant/scripts/bootstrap.sh"
   end
 end
+
+# Пароль admin для Argo CD:
+# cOiBFwZPZO5B2v1m
